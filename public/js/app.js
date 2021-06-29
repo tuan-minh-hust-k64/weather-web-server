@@ -8,7 +8,7 @@ form.addEventListener('submit', function(event) {
     event.preventDefault();
     message_2.textContent='';
     message_1.textContent='Loading...';
-    fetch('http://localhost:3000/weather?address='+input.value)
+    fetch('/weather?address='+input.value)
     .then(function (response) {
         return response.json();
     })

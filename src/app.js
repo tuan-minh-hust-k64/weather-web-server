@@ -5,6 +5,7 @@ const { RSA_NO_PADDING } = require('constants');
 const geocode = require('./util/geocode');
 const forecast = require('./util/forecast');
 const app = express();
+const post = process.env.PORT || 3000;
 //setup path to view, partial
 const viewsDirectoryPath = path.join(__dirname,'../template/views');
 const partialPath = path.join(__dirname,'../template/partials');
@@ -47,6 +48,6 @@ app.get('*', function (req, res) {
     res.send('404 NOT FOUND');
 })
 
-app.listen(3000, function(){
+app.listen(post, function(){
     console.log('server is running!');
 });
