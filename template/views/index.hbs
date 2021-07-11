@@ -9,13 +9,40 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0" nonce="Ilh11Efy"></script>
-    <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-    <span style="vertical-align: bottom; width: 232px; height: 40px;"><iframe name="f33d76d9d71dc48" width="1000px" height="1000px" data-testid="fb:login_button Facebook Social Plugin" title="fb:login_button Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v11.0/plugins/login_button.php?app_id=113869198637480&amp;auto_logout_link=false&amp;button_type=continue_with&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df3b40ff76d70a04%26domain%3Ddevelopers.facebook.com%26origin%3Dhttps%253A%252F%252Fdevelopers.facebook.com%252Ff2c163128510f8%26relation%3Dparent.parent&amp;container_width=734&amp;locale=vi_VN&amp;login_text=&amp;sdk=joey&amp;size=large&amp;use_continue_as=false" style="border: none; visibility: visible; width: 232px; height: 40px;" class=""></iframe></span>
-    <div class="main-content">
-        {{>header}}
+        
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '811125736273086',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v11.0'
+    });
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+    FB.AppEvents.logPageView();   
+      
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+  
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+</script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0&appId=811125736273086&autoLogAppEvents=1" nonce="trHS0kRn"></script>
+<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
         <p>Use this site to get your weather!</p>
         <form action="">
             <input type="text" placeholder="location">
@@ -25,6 +52,10 @@
         <p id="message-2"></p>
     </div>
 
+  <fb:login-button 
+    scope="public_profile,email"
+    onlogin="checkLoginState();">
+  </fb:login-button>
     {{>footer}}
     <script src="/js/app.js"></script>
 </body>
