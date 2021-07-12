@@ -42,15 +42,13 @@
   function statusChangeCallback(response) {  
     if(response.status==='connected') {
       const facebookID = response.authResponse.userID;
-      const facebookNameUser = testAPI();
+      FB.api('/me', function(response) {
+        const facebookNameUser = response.name;
+      });
       console.log(facebookID, facebookNameUser);
     }                 // The current login status of the person.
   }
-  function testAPI() {
-    FB.api('/me', function(response) {
-        return response.name;
-      });
-  }
+ 
 </script>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0&appId=811125736273086&autoLogAppEvents=1" nonce="trHS0kRn"></script>
