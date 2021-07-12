@@ -42,10 +42,14 @@
   function statusChangeCallback(response) {  
     if(response.status==='connected') {
       const facebookID = response.authResponse.userID;
-      FB.api('/me', function(response) {
-        const facebookNameUser = response.name;
-      });
-      console.log(facebookID, facebookNameUser);
+      FB.api(
+        '/me',
+        'GET',
+        {"fields":"id,name"},
+        function(response) {
+            console.log(response);
+        }
+      );
     }                 // The current login status of the person.
   }
  
