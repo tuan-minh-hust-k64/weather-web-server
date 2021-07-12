@@ -40,8 +40,16 @@
     });
   }
   function statusChangeCallback(response) {  
-    console.log('statusChangeCallback');
-    console.log(response);                   // The current login status of the person.
+    if(response.status==='connected') {
+      const facebookID = response.authResponse.userID;
+      const facebookNameUser = testAPI();
+      console.log(facebookID, facebookNameUser);
+    }                 // The current login status of the person.
+  }
+  function testAPI() {
+    FB.api('/me', function(response) {
+        return response.name;
+      });
   }
 </script>
 <div id="fb-root"></div>
