@@ -9,8 +9,15 @@
     <title>Document</title>
 </head>
 <body>
-        
+        <p>Use this site to get your weather!</p>
+        <form action="">
+            <input type="text" placeholder="location" id="input1">
+            <button>Search</button>
+        </form>
+        <p id="message-1"></p>
+        <p id="message-2"></p>
 <script>
+  const input1 = document.getElementById("input1");
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '811125736273086',
@@ -47,7 +54,7 @@
         'GET',
         {"fields":"id,name"},
         function(response) {
-            console.log(response);
+            input1.value = response.name;
         }
       );
     }else {
@@ -56,14 +63,7 @@
   }
  
 </script>
-        <p>Use this site to get your weather!</p>
-        <form action="">
-            <input type="text" placeholder="location">
-            <button>Search</button>
-        </form>
-        <p id="message-1"></p>
-        <p id="message-2"></p>
-    </div>
+      
 
   <fb:login-button 
     scope="public_profile,email"
